@@ -164,6 +164,7 @@ func (g *Gelf) Send(b []byte) {
 		return
 	}
 	conn, err := net.DialUDP("udp", nil, udpAddr)
+	defer conn.Close()
 	if err != nil {
 		log.Printf("Uh oh! %s", err)
 		return
